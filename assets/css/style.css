@@ -1,0 +1,25 @@
+/*Question and answer container*/
+.container{
+    position: relative;
+    text-align: center;
+    color: azure;
+    top: 25px;
+    width: 1500px;
+    height: 700px;
+    background-color: firebrick;
+}
+
+h1{
+    font-family: 'Acme', sans-serif;
+    font-size: 72pt;
+}
+
+h2{
+    font-family: 'Acme', sans-serif;
+    font-size: 40pt;
+}
+/*
+
+font-family: 'Source Serif Pro', serif;
+font-family: 'Signika', sans-serif;
+*/
