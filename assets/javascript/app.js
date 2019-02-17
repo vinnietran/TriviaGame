@@ -1,56 +1,108 @@
 // Array to store querstion objects 
 var questionData = []
 
-var question1= {
-    content: "Which is the only American Football team to go a whole season undefeated, including the Super Bowl? Miami Dolphins",
-    answer1: "Pittsburgh Steelers", answer2: "Arizona Cardinals", answer3: "Miami Dolphins", answer4: "Chicago Bears"
-};
+var questions = [
+  {
+  content: "Which is the only American Football team to go a whole season undefeated, including the Super Bowl? Miami Dolphins",
+  answers: {
+    a: "Pittsburgh Steelers", b: "Arizona Cardinals", c: "Miami Dolphins", d: "Chicago Bears"
+  },
+  correctAnswer: "c"
+},
+
+{
+  content: "How many NBA championships did Michael Jordan win with the Chicago Bulls?",
+  answers: {
+    a:"3", b: "6", c: "4", d: "12,000,000"
+  },
+  correctAnswer: "b"
+},
+
+{
+  content: "Which NFL team appeared in four consecutive Super Bowls from 1991 - 1994 and lost them all?",
+  answers: {
+  a:"Tampa Bay Buccaneers", b: "Jacksonville Jaguars", c: "Philadelphia Eagles", d: "Buffalo Bills"
+  },
+  correctAnswer: "d"
+}
+]
 
 
-    var question2 =  {
-    content: "How many NBA championships did Michael Jordan win with the Chicago Bulls?",
-    answer1: "3", answer2: "6", answer3: "4", answer4: "12,000,000"
-};
-
-
-    var question3 =  {
-    content: "Which NFL team appeared in four consecutive Super Bowls from 1991 - 1994 and lost them all?",
-    answer1: "Tampa Bay Buccaneers", answer2: "Jacksonville Jaguars", answer3: "Philadelphia Eagles", answer4: "Buffalo Bills"
-};
-
-
-// variables to counts correct answers and incorrect 
+//variable declarations
 var correctAnswers = 0;
 var incorrectAnswers = 0;
 var playerChoice = "";
+var timer = 7;
+var intervalId;
 
-// for loop to display questions with timeout and interval 
-
+// function calls
 startGame();
+run();
+displayQuestion();
 
-function startGame(){
-//push questions to array
-questionData.push(question1, question2, question3);
+//run timer function
+function run() {
+  clearInterval(intervalId);
+  intervalId = setInterval(decrement, 1000);
+}
+//end timer function 
 
-console.log(questionData);
+//decrease timer function
+function decrement() {
 
-/*chosenQuestion = questionData[Math.floor(Math.random() * questionData.length)];
-$("#question").text(chosenQuestion);
-console.log(chosenQuestion);*/
+  timer--;
 
-for (var i = 0; i < questionData.length; i++){
+  $("#time").html("<h2> Time Remaining:  " + timer + "</h2>");
+
+  if (timer === 0) {
+
+    stop();
+
+    $("#time").html("<h2> TIME'S UP!! </h2>");
+  }
+}
+//end decrease timer function
+
+
+//  The stop function
+function stop() {
+
+  clearInterval(intervalId);
+}
+//end stop function
+
+
+
+function startGame() {
+  //push questions to array
+  questionData.push(questions);
+
+  //console.log(questionData);
+
+  for (var i = 0; i < questionData.length; i++) {
     $("#question").text(questionData[i].content);
     $("#ans1").text(questionData[i].answer1);
     $("#ans2").text(questionData[i].answer2);
     $("#ans3").text(questionData[i].answer3);
     $("#ans4").text(questionData[i].answer4);
 
+  }
+
+  console.log(questionData);
+
+  questionData.forEach(displayQuestion);
 }
 
-}
+  function displayQuestion(){
+
+    $("#question").append(questionData.content);
+    $("#ans1").append(questionData.answers);
+  }
 
 
-// if statements to check the correct answer and move on to next question 
 
 
-// display user score 
+
+//what if I used if statements that are based on a timer 
+
+//need to figure out how to display the array on the html
