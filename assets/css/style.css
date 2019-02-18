@@ -5,8 +5,9 @@
     color: azure;
     top: 25px;
     width: 1500px;
-    height: 700px;
-    background-color: firebrick;
+    height: auto;
+    background-color: #1f33c2;
+    margin-bottom: 15px;
 }
 
 h1{
@@ -18,8 +19,14 @@ h2{
     font-family: 'Acme', sans-serif;
     font-size: 40pt;
 }
-/*
 
-font-family: 'Source Serif Pro', serif;
-font-family: 'Signika', sans-serif;
-*/
+h3{
+    font-family: 'Source Serif Pro', serif;
+    font-size: 20pt;
+}
+
+#time{
+    color: yellow;
+    font-family: 'Signika', sans-serif;
+    font-size: 40pt;
+}
