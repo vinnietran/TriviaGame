@@ -62,6 +62,7 @@ $("#startButton").html("");
 
 })
 
+
 //--------------------------------------------------------------------------------------------------------------------
 
 //run timer function
@@ -95,14 +96,14 @@ function stop() {
     $("#question1").html("<h3>" + question1.content  + "</h3>");
     $("#ans1").html( "<input type= radio name= colors id= red></input> " + question1.answers.a + " ");
     $("#ans1").append("<input type= radio name= colors id= red></input> "  + question1.answers.b + " ");
-    $("#ans1").append("<input type= radio name= colors id= red></input> " + question1.answers.c + " ");
+    $("#ans1").append("<input type= radio name= colors id= correct></input> " + question1.answers.c + " ");
     $("#ans1").append("<input type= radio name= colors id= red></input> " + question1.answers.d + " ");
   }
 
   function displayQuestion2(){
     $("#question2").html("<h3>" + question2.content  + "</h3>");
     $("#ans2").html( "<input type= radio name= colors id= red></input> " + question2.answers.a + " ");
-    $("#ans2").append("<input type= radio name= colors id= red></input> "  + question2.answers.b + " ");
+    $("#ans2").append("<input type= radio name= colors id= correct></input> "  + question2.answers.b + " ");
     $("#ans2").append("<input type= radio name= colors id= red></input> " + question2.answers.c + " ");
     $("#ans2").append("<input type= radio name= colors id= red></input> " + question2.answers.d + " ");
   }
@@ -112,7 +113,7 @@ function stop() {
     $("#ans3").html( "<input type= radio name= colors id= red></input> " + question3.answers.a + " ");
     $("#ans3").append("<input type= radio name= colors id= red></input> "  + question3.answers.b + " ");
     $("#ans3").append("<input type= radio name= colors id= red></input> " + question3.answers.c + " ");
-    $("#ans3").append("<input type= radio name= colors id= red></input> " + question3.answers.d + " ");
+    $("#ans3").append("<input type= radio name= colors id= correct></input> " + question3.answers.d + " ");
   }
 
   function displayQuestion4(){
@@ -120,17 +121,24 @@ function stop() {
     $("#ans4").html( "<input type= radio name= colors id= red></input> " + question4.answers.a + " ");
     $("#ans4").append("<input type= radio name= colors id= red></input> "  + question4.answers.b + " ");
     $("#ans4").append("<input type= radio name= colors id= red></input> " + question4.answers.c + " ");
-    $("#ans4").append("<input type= radio name= colors id= red></input> " + question4.answers.d + " ");
+    $("#ans4").append("<input type= radio name= colors id= correct></input> " + question4.answers.d + " ");
   }
 
   function displayQuestion5(){
     $("#question5").html("<h3>" + question5.content  + "</h3>");
     $("#ans5").html( "<input type= radio name= colors id= red></input> " + question5.answers.a + " ");
-    $("#ans5").append("<input type= radio name= colors id= red></input> "  + question5.answers.b + " ");
+    $("#ans5").append("<input type= radio name= colors id= correct></input> "  + question5.answers.b + " ");
     $("#ans5").append("<input type= radio name= colors id= red></input> " + question5.answers.c + " ");
     $("#ans5").append("<input type= radio name= colors id= red></input> " + question5.answers.d + " ");
   }
 
+  $("#submitButton").click(function checkAnswers(){
+if (document.getElementById('correct').checked){
+  correctAnswers++; 
+  console.log(correctAnswers);
+}
+
+  })
 
 
 
