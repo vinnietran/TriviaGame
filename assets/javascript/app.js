@@ -2,12 +2,11 @@
 var questionData = []
 
 var questions = [
-  {
-  content: "Which is the only American Football team to go a whole season undefeated, including the Super Bowl? Miami Dolphins",
+  question1 = {
+  content: "Which is the only American Football team to go a whole season undefeated, including the Super Bowl?",
   answers: {
     a: "Pittsburgh Steelers", b: "Arizona Cardinals", c: "Miami Dolphins", d: "Chicago Bears"
   },
-  correctAnswer: "c"
 },
 
 {
@@ -15,7 +14,6 @@ var questions = [
   answers: {
     a:"3", b: "6", c: "4", d: "12,000,000"
   },
-  correctAnswer: "b"
 },
 
 {
@@ -23,7 +21,6 @@ var questions = [
   answers: {
   a:"Tampa Bay Buccaneers", b: "Jacksonville Jaguars", c: "Philadelphia Eagles", d: "Buffalo Bills"
   },
-  correctAnswer: "d"
 }
 ]
 
@@ -38,7 +35,7 @@ var intervalId;
 // function calls
 startGame();
 run();
-displayQuestion();
+displayQuestion1();
 
 //run timer function
 function run() {
@@ -74,30 +71,29 @@ function stop() {
 
 
 function startGame() {
-  //push questions to array
-  questionData.push(questions);
 
-  //console.log(questionData);
 
-  for (var i = 0; i < questionData.length; i++) {
-    $("#question").text(questionData[i].content);
-    $("#ans1").text(questionData[i].answer1);
-    $("#ans2").text(questionData[i].answer2);
-    $("#ans3").text(questionData[i].answer3);
-    $("#ans4").text(questionData[i].answer4);
-
-  }
-
-  console.log(questionData);
-
-  questionData.forEach(displayQuestion);
+//displayQuestion1();
+console.log(questions);
 }
 
-  function displayQuestion(){
-
-    $("#question").append(questionData.content);
-    $("#ans1").append(questionData.answers);
+ function displayQuestion1(){
+  console.log("FUCK");
+    $("#question1").html(question1.content);
+    $("#ans1").html( "<input type= radio name= colors id= red></input> " + question1.answers.a + " ");
+    $("#ans1").append("<input type= radio name= colors id= red></input> "  + question1.answers.b + " ");
+    $("#ans1").append("<input type= radio name= colors id= red></input> " + question1.answers.c + " ");
+    $("#ans1").append("<input type= radio name= colors id= red></input> " + question1.answers.d + " ");
   }
+
+  function displayQuestion2(){
+    console.log("FUCK");
+      $("#question").html(question2.content);
+      $("#ans1").html(question2.answers.a);
+      $("#ans2").html(question2.answers.b);
+      $("#ans3").html(question2.answers.c);
+      $("#ans4").html(question2.answers.d);
+    }
 
 
 
