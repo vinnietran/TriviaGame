@@ -41,9 +41,11 @@ question5 = {
 //variable declarations
 var correctAnswers = 0;
 var incorrectAnswers = 0;
+var incomplete =0;
 var playerChoice = "";
 var timer = 7;
 var intervalId;
+var answers = [];
 //--------------------------------------------------------------------------------------------------------------------
 
 // start game on click function
@@ -58,7 +60,9 @@ displayQuestion3();
 displayQuestion4();
 displayQuestion5();
 
-$("#startButton").html("");
+$("#startButton").hide();
+$("#submitButton").show();
+
 
 })
 
@@ -79,6 +83,7 @@ function decrement() {
   if (timer === 0) {
     stop();
     $("#time").html(" TIME'S UP!! ");
+
   }
 }
 //end decrease timer function
@@ -94,51 +99,82 @@ function stop() {
 //im sure its not the most efficient way to do it, but functions to display questions
  function displayQuestion1(){
     $("#question1").html("<h3>" + question1.content  + "</h3>");
-    $("#ans1").html( "<input type= radio name= colors id= red></input> " + question1.answers.a + " ");
-    $("#ans1").append("<input type= radio name= colors id= red></input> "  + question1.answers.b + " ");
-    $("#ans1").append("<input type= radio name= colors id= correct></input> " + question1.answers.c + " ");
-    $("#ans1").append("<input type= radio name= colors id= red></input> " + question1.answers.d + " ");
+    $("#ans1").html( "<input type= radio value= wrong name= colors1 id= answer></input> " + question1.answers.a + " ");
+    $("#ans1").append("<input type= radio value= wrong name= colors1 id= answer></input> "  + question1.answers.b + " ");
+    $("#ans1").append("<input type= radio value= correct name= colors1 id= answer></input> " + question1.answers.c + " ");
+    $("#ans1").append("<input type= radio value= wrong name= colors1 id= answer></input> " + question1.answers.d + " ");
   }
 
   function displayQuestion2(){
     $("#question2").html("<h3>" + question2.content  + "</h3>");
-    $("#ans2").html( "<input type= radio name= colors id= red></input> " + question2.answers.a + " ");
-    $("#ans2").append("<input type= radio name= colors id= correct></input> "  + question2.answers.b + " ");
-    $("#ans2").append("<input type= radio name= colors id= red></input> " + question2.answers.c + " ");
-    $("#ans2").append("<input type= radio name= colors id= red></input> " + question2.answers.d + " ");
+    $("#ans2").html( "<input type= radio value= wrong name= colors2 id= answer></input> " + question2.answers.a + " ");
+    $("#ans2").append("<input type= radio value= correct name= colors2 id= answer> "  + question2.answers.b + " ");
+    $("#ans2").append("<input type= radio value= wrong name= colors2 id= answer></input> " + question2.answers.c + " ");
+    $("#ans2").append("<input type= radio value= wrong name= colors2 id= answer></input> " + question2.answers.d + " ");
   }
 
   function displayQuestion3(){
     $("#question3").html("<h3>" + question3.content  + "</h3>");
-    $("#ans3").html( "<input type= radio name= colors id= red></input> " + question3.answers.a + " ");
-    $("#ans3").append("<input type= radio name= colors id= red></input> "  + question3.answers.b + " ");
-    $("#ans3").append("<input type= radio name= colors id= red></input> " + question3.answers.c + " ");
-    $("#ans3").append("<input type= radio name= colors id= correct></input> " + question3.answers.d + " ");
+    $("#ans3").html( "<input type= radio value= wrong name= colors3 id= answer></input> " + question3.answers.a + " ");
+    $("#ans3").append("<input type= radio value= wrong name= colors3 id= answer></input> "  + question3.answers.b + " ");
+    $("#ans3").append("<input type= radio value= wrong name= colors3 id= answer></input> " + question3.answers.c + " ");
+    $("#ans3").append("<input type= radio value= correct name= colors3 id= answer></input> " + question3.answers.d + " ");
   }
 
   function displayQuestion4(){
     $("#question4").html("<h3>" + question4.content  + "</h3>");
-    $("#ans4").html( "<input type= radio name= colors id= red></input> " + question4.answers.a + " ");
-    $("#ans4").append("<input type= radio name= colors id= red></input> "  + question4.answers.b + " ");
-    $("#ans4").append("<input type= radio name= colors id= red></input> " + question4.answers.c + " ");
-    $("#ans4").append("<input type= radio name= colors id= correct></input> " + question4.answers.d + " ");
+    $("#ans4").html( "<input type= radio value= wrong name= colors4 id= answer></input> " + question4.answers.a + " ");
+    $("#ans4").append("<input type= radio value= wrong name= colors4 id= answer></input> "  + question4.answers.b + " ");
+    $("#ans4").append("<input type= radio value= wrong name= colors4 id= answer></input> " + question4.answers.c + " ");
+    $("#ans4").append("<input type= radio value= correct name= colors4 id= answer></input> " + question4.answers.d + " ");
   }
 
   function displayQuestion5(){
     $("#question5").html("<h3>" + question5.content  + "</h3>");
-    $("#ans5").html( "<input type= radio name= colors id= red></input> " + question5.answers.a + " ");
-    $("#ans5").append("<input type= radio name= colors id= correct></input> "  + question5.answers.b + " ");
-    $("#ans5").append("<input type= radio name= colors id= red></input> " + question5.answers.c + " ");
-    $("#ans5").append("<input type= radio name= colors id= red></input> " + question5.answers.d + " ");
+    $("#ans5").html( "<input type= radio value= wrong name= colors5 id= answer></input> " + question5.answers.a + " ");
+    $("#ans5").append("<input type= radio value= correct name= colors5 id= answer></input> "  + question5.answers.b + " ");
+    $("#ans5").append("<input type= radio value= wrong name= colors5 id= answer></input> " + question5.answers.c + " ");
+    $("#ans5").append("<input type= radio value= wrong name= colors5 id= answer></input> " + question5.answers.d + " ");
   }
 
   $("#submitButton").click(function checkAnswers(){
-if (document.getElementById('correct').checked){
-  correctAnswers++; 
-  console.log(correctAnswers);
-}
+    for (var i = 0; i <= 6; i++){
+    var radios = document.getElementsByName("colors"+i);
+    for (var j = 0; j < radios.length; j++){
+    var radio = radios[j];
+    if(radio.value == "correct" && radio.checked){
+      correctAnswers++;
+    }
+    else if(radio.value == "wrong" && radio.checked){
+      incorrectAnswers++;
+    }
+    }
+  }
+  if (correctAnswers + incorrectAnswers < 5){
+    var incompVal = 5 - (correctAnswers  + incorrectAnswers);
+    incomplete = incompVal;
+  }
+
+$("#question1").hide();
+$("#ans1").hide();
+$("#question2").hide();
+$("#ans2").hide();
+$("#question3").hide();
+$("#ans3").hide();
+$("#question4").hide();
+$("#ans4").hide();
+$("#question5").hide();
+$("#ans5").hide();
+
+$("#results").append("Correct Answers: " + correctAnswers + "<br>" + "Incorrect Answers: " + 
+incorrectAnswers + "<br>" + "Incomplete Answers: " + incomplete)
 
   })
+
+
+
+
+
 
 
 

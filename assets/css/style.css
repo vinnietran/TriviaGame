@@ -33,6 +33,7 @@ h3{
 
 #submitButton{
     padding-bottom: 10px;
+    display: none;
 }
 
 #button{
