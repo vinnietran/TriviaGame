@@ -1,7 +1,7 @@
 /*Question and answer container*/
 .container{
     position: relative;
-    text-align: center;
+    text-align: left;
     color: azure;
     top: 25px;
     width: 1500px;
@@ -13,6 +13,7 @@
 h1{
     font-family: 'Acme', sans-serif;
     font-size: 72pt;
+    text-align: center;
 }
 
 h2{
@@ -29,14 +30,41 @@ h3{
     color: yellow;
     font-family: 'Signika', sans-serif;
     font-size: 40pt;
+    text-align: center;
 }
 
 #submitButton{
     padding-bottom: 10px;
     display: none;
+    align-content: center;
 }
 
 #button{
     background-color: yellow;
     color: blue;
 }
+
+#results {
+    text-align: center;
+    font-family: 'Signika', sans-serif;
+    font-size: 35pt;
+}
+
+#retry{
+    display: none;
+}
+
+h4{
+    font-family: 'Acme', sans-serif;
+    font-size: 72pt;
+    text-align: center;
+    color: red;
+}
+
+h5{
+    font-family: 'Acme', sans-serif;
+    font-size: 72pt;
+    text-align: center;
+    color: yellow;
+}
+
